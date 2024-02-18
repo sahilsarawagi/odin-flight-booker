@@ -1,0 +1,36 @@
+<h1>Search Your Flights here:</h1>
+<%= form_with url: "/", method: :get, data: {turbo: false} do |form| %>
+  <div>
+    <%= form.label :arrival_airport_id %>
+    <select name="arrival_code">
+    <%= @airports.each do |airport| %>
+      <option value="<%= airport.airport_code %>"><%= airport.airport_code %></option>
+    <% end %>
+  </select>
+  </div><br>
+
+  <div>
+    <%= form.label :departure_airport_id %>
+    <select name="departure_code">
+    <%= @airports.each do |airport| %>
+      <option value="<%= airport.airport_code %>"><%= airport.airport_code %></option>
+    <% end %>
+  </select>
+  </div><br>
+
+  <div>
+  <%= form.label :num_tickets %>
+  <%= form.select :num_tickets, 1..4 %>
+  </div><br>
+
+  <div>
+    <%= form.label :departure_date %>
+    <%= select_date(Date.today,:start_year => Date.today.year, order: [:year, :month, :day]) %>
+  </div><br>
+  
+  <div>
+    <%= form.submit :search %>
+  </div>
+<% end %>
+
+<h2>Available Flights</h2>
