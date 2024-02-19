@@ -25,7 +25,8 @@
 
   <div>
     <%= form.label :departure_date %>
-    <%= select_date(Date.today,:start_year => Date.today.year, order: [:year, :month, :day]) %>
+
+    <%= select_tag "departure_date", options_from_collection_for_select(@flights,'departure_date', :date_formatted) %>
   </div><br>
   
   <div>
@@ -33,4 +34,18 @@
   </div>
 <% end %>
 
+<% if @searched_flights.blank? %> 
+<h2>No flights on this route </h2>
+<% else %>
 <h2>Available Flights</h2>
+<ol>
+  <% @searched_flights.each do |flights| %>
+      <li>
+      <p>flight Date: <%= flights.departure_date %></p>
+      <p>flight Time: <%= flights.departure_time %></p>
+      </li>
+<% end %>
+
+</ol>
+<% end %>
+
