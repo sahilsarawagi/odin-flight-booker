@@ -34,18 +34,22 @@
   </div>
 <% end %>
 
+<%= form_with url: new_booking_path, method: :get, data: {turbo: false} do |form| %>
 <% if @searched_flights.blank? %> 
 <h2>No flights on this route </h2>
 <% else %>
 <h2>Available Flights</h2>
 <ol>
-  <% @searched_flights.each do |flights| %>
+
       <li>
-      <p>flight Date: <%= flights.departure_date %></p>
-      <p>flight Time: <%= flights.departure_time %></p>
+      <%= form.collection_radio_buttons( :selected_flight, @searched_flights, :id, :id) %>
       </li>
-<% end %>
+      <%= form.hidden_field :num_tickets, value: @num_tickets %>
 
 </ol>
+ <div>
+    <%= form.submit %>
+  </div>
 <% end %>
 
+<% end %>

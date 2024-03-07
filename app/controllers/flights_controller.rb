@@ -2,6 +2,7 @@ class FlightsController < ApplicationController
   def index
     @airports =Airport.all
     @flights =Flight.where.not(departure_date: nil).distinct.order(departure_date: :desc)
+    @num_tickets =params[:num_tickets]
     @searched_flights = search_flights
   end
 
