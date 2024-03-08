@@ -1,0 +1,26 @@
+<h1> You are booking for <h1>
+<h2>Your flight Id is: <%=@flight.id%>
+<h2>Boarding Airport: <%=@flight.arrival_airport.airport_code%> </h2> 
+<h2>Destination Airport: <%=@flight.departure_airport.airport_code%> </h2>
+<h2>Date of flight: <%=@flight.departure_date%> </h2>
+
+<h1>Fill the passengers details</h1>
+
+<%= form_with model: @booking do |form| %>
+<%= form.hidden_field :flight_id, value: @selected_flight %>
+  Passengers:
+  <ul>
+    <%= form.fields_for :passengers do |passenger_form| %>
+      <li>
+        <%= passenger_form.label :name %>
+        <%= passenger_form.text_field :name %>
+
+        <%= passenger_form.label :email %>
+        <%= passenger_form.text_field :email %>
+      </li>
+    <% end %>
+  </ul>
+   <div>
+    <%= form.submit %>
+  </div>
+<% end %>
