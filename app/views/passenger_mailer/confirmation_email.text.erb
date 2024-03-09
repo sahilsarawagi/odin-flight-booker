@@ -1,0 +1,20 @@
+Ticket Confirmation for Your Flight
+===================================
+
+Dear <%= @passenger.name %>,
+
+We are delighted to inform you that your ticket for the upcoming flight has been successfully confirmed.
+
+Flight Details:
+- Flight Number: <%= @flight.id %>
+- Departure: <%= @flight.departure_airport.airport_code %> - <%= @flight.departure_date.strftime('%Y-%m-%d %H:%M') %>
+- Arrival: <%= @flight.arrival_airport.airport_code %>  
+
+Please ensure you arrive at the airport at least 2 hours before the departure time. Have a safe and pleasant journey!
+
+If you have any inquiries or require assistance, do not hesitate to contact us at example@example.com.
+
+Thank you for choosing our airline.
+
+Best regards,
+The example.com Team

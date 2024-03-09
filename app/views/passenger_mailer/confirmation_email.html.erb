@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Ticket Confirmation for Your Flight</h1>
+    <p>
+      Dear <%= @passenger.name %>,
+    </p>
+    <p>
+      We are pleased to inform you that your ticket for the upcoming flight has been successfully confirmed.
+    </p>
+    <p>
+      Flight Details:
+      <ul>
+        <li>Flight Number: <%= @flight.id %></li>
+        <li>Departure: <%= @flight.departure_airport.airport_code %> - <%= @flight.departure_date.strftime('%Y-%m-%d %H:%M') %></li>
+        <li>Arrival: <%= @flight.arrival_airport.airport_code %></li>
+      </ul>
+    </p>
+    <p>
+      Please arrive at the airport at least 2 hours before the departure time. Have a safe and pleasant journey!
+    </p>
+    <p>
+      If you have any questions or need further assistance, feel free to contact us at example@example.com.
+    </p>
+    <p>Thank you for choosing our airline.</p>
+  </body>
+</html>
