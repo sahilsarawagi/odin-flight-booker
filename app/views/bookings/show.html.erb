@@ -1,0 +1,18 @@
+<h2>Your flight Id is: <%=@booking.flight.id%></h2>
+<h2>Boarding Airport: <%=@booking.flight.arrival_airport.airport_code%> </h2> 
+<h2>Destination Airport: <%=@booking.flight.departure_airport.airport_code%> </h2>
+<h2>Date of flight: <%=@booking.flight.departure_date%> </h2>
+
+<h3>Passengers Details</h3>
+ <ol>
+    <% @booking.passengers.each do |passenger| %>
+        <li>
+          <div>
+            Name: <%=passenger.name%>
+            </div>
+          <div>
+            Email: <%=passenger.email%>
+            </div>
+        </li>
+    <% end %>
+</ol>   
